@@ -25,7 +25,7 @@ public class Main {
 
     }
 
-    public static String[] metot_p21() {
+    public static String[] metot_cinsiyet() {
         String cinsiyetler[] = new String[20];
         cinsiyetler[0] = metot1();
         for (int i = 1; i < 20; i++) {
@@ -39,7 +39,7 @@ public class Main {
         return cinsiyetler;
     }
 
-    public static int[] metot_p22() {
+    public static int[] metot_yas() {
         int yaş[] = new int[20];
         yaş[0] = metot2();
         for (int i = 1; i < 20; i++) {
@@ -54,7 +54,7 @@ Metot P2-1 : Bir metot yaz ve bu metot kalan 19 kişinin rastgele oluşturulmuş
 Metot P2-2 : Bir metot yaz ve bu metot kalan 19 kişin rastgele yaşlarını belirlesin ve bu arrayi döndürsün ve kendi kullanıcımız da bu arrayde olsun P1-2 i kullanarak ekle. (YAŞ MAX : 40 , MİN : 20)
 
  */
-    public static int[] metot_p31() {
+    public static int[] metot_sınav1() {
 
         int[] sınavPuan1 = new int[20];
         for (int i = 0; i < sınavPuan1.length; i++) {
@@ -63,7 +63,7 @@ Metot P2-2 : Bir metot yaz ve bu metot kalan 19 kişin rastgele yaşlarını bel
         return sınavPuan1;
     }
 
-    public static int[] metot_p32() {
+    public static int[] metot_sınav2() {
         int[] sınavPuan2 = new int[20];
         for (int i : sınavPuan2) {
             sınavPuan2[i] = ran.nextInt(101);
@@ -77,6 +77,91 @@ Metot P3-1 :  Sınav 1’in HAM puanlarının (0-100) random oluşturulduğu arr
 
 Metot P3-2 :  Sınav 2’in HAM puanlarının (0-100) random oluşturulduğu arrayi return eder.
  */
+    /*Programcı 4 : Son hali indirir ve aşağıdaki metotları githuba gönderir.
+     Metot P4-1 : P2-1 ve P2-2 den alınan bilgileri kullanarak sınav 1 için puan eklemelerini yapar ve puan eklenmiş arrayi return eder.
+     (SINAV PUAN EKLEMELERİ EN ALTTA Info1 OLARAK BELİRTİLMİŞTİR)
+     Metot P4-2 : P2-1 ve P2-2 den alınan bilgileri kullanarak sınav 2 için puan eklemelerini yapar ve puan eklenmiş arrayi return eder.
+     (SINAV 2 PUAN EKLEMELERİ EN ALTTA Info2 OLARAK BELİRTİLMİŞTİR)
+
+
+INFO2 (YAZILI SINAV 2 KURALLARI):
+
+	KADINLAR İÇİN :
+			  YAŞI 20-25 ARASI ERKEKLERE RANDOM PUANDAN %15 DÜŞÜLÜR
+			  YAŞI 20-25 ARASI ERKEKLERE RANDOM PUANA EK %10 EKLENİR
+			  YAŞI 20-25 ARASI ERKEKLERE RANDOM PUANDAN %30 DÜŞÜLÜR
+ERKEKLER İÇİN :
+  YAŞI 20-25 ARASI ERKEKLERE RANDOM PUANDAN %10 DÜŞÜLÜR
+			  YAŞI 25-35 ARASI ERKEKLERE RANDOM PUANDAN %20 DÜŞÜLÜR
+			  YAŞI 35-40 ARASI ERKEKLERE RANDOM PUANA EK %5 EKLENİR
+
+INFO1 (YAZILI SINAV 1 KURALLARI):
+	ERKEKLER İÇİN :
+               YAŞI 20-25 ARASI ERKEKLERE RANDOM PUANDAN %10 DÜŞÜLÜR
+			  YAŞI 25-35 ARASI ERKEKLERE RANDOM PUANA EK %20 EKLENİR
+			  YAŞI 35-40 ARASI ERKEKLERE RANDOM PUANA EK %5 EKLENİR
+	KADINLAR İÇİN :
+			  YAŞI 20-25 ARASI KADINLARA RANDOM PUANA EK %15 EKLENİR
+			  YAŞI 25-35 ARASI KADINLARA RANDOM PUANDAN %10 DÜŞÜLÜR
+			  YAŞI 35-40 ARASI KADINLARA RANDOM PUANA EK %30 EKLENİR
+     */
+    public static int[] P4_1(){
+        String cinsiyet[] = metot_cinsiyet();
+        int yas[]  =metot_yas();
+        int sınav[] = metot_sınav1();
+
+        for (int i = 0; i < sınav.length ; i++) {
+          if (cinsiyet[i].equals("kız")){
+              if (yas[i]<=25){
+                  sınav[i] = sınav[i]/100*15+sınav[i];
+              } else if (yas[i]<=35) {
+                  sınav[i] = -sınav[i]/100*10+sınav[i];
+              } else if (yas[i]<=40) {
+                  sınav[i] = sınav[i]/100*30+sınav[i];
+              }
+
+          }else {
+              if (yas[i]<=25){
+                  sınav[i] = -sınav[i]/100*10+sınav[i];
+              } else if (yas[i]<=35) {
+                  sınav[i] = sınav[i]/100*20+sınav[i];
+              } else if (yas[i]<=40) {
+                  sınav[i] = sınav[i]/100*5+sınav[i];
+              }
+
+          }
+        }
+        return sınav;
+    }
+
+    public static int[] P4_2(){
+        String cinsiyet[] = metot_cinsiyet();
+        int yas[]  =metot_yas();
+        int sınav2[] = metot_sınav2();
+
+        for (int i = 0; i < sınav2.length ; i++) {
+            if (cinsiyet[i].equals("kız")){
+                if (yas[i]<=25){
+                    sınav2[i] = -sınav2[i]/100*15+ sınav2[i];
+                } else if (yas[i]<=35) {
+                    sınav2[i] = sınav2[i]/100*10+ sınav2[i];
+                } else if (yas[i]<=40) {
+                    sınav2[i] = -sınav2[i]/100*30+ sınav2[i];
+                }
+
+            }else {
+                if (yas[i]<=25){
+                    sınav2[i] = -sınav2[i]/100*10+ sınav2[i];
+                } else if (yas[i]<=35) {
+                    sınav2[i] = -sınav2[i]/100*20+ sınav2[i];
+                } else if (yas[i]<=40) {
+                    sınav2[i] = sınav2[i]/100*5+ sınav2[i];
+                }
+
+            }
+        }
+        return sınav2;
+    }
 
 
 }
