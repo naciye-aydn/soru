@@ -163,5 +163,42 @@ INFO1 (YAZILI SINAV 1 KURALLARI):
         return sınav2;
     }
 
+    /*
+Programcı 5: Son hali indirir ve aşağıdaki metotları githuba gönderir.
+    Metot P5-1: P4-1’in üstüne saha sınav puanlarını ekler. (SAHA SINAV PUAN HESAPLAMASI Info3 olarak belirtilmiştir.)
+	Metot P5-2: P4-2’nin üstüne saha sınav puanlarını ekler (SAHA SINAV PUAN HESAPLAMASI Info3 olarak belirtilmiştir.)
 
+	INFO3 (SAHA KURALLARI)
+		              HERKES İÇİN EŞİT (ERKEK VE KADIN)
+			20-30 ARASINDAKİ HERKESTEN %5 PUANA EKLENİR.
+			30-40 ARASINDAKİ SAHADA BİR AVANTAJI YOKTUR.
+
+     */
+    public static int [] P5_1(){
+
+        int [] sınavP5_1 =  P4_1();
+        int [] yasP5_1 = metot_yas();
+
+        for (int i = 0; i < yasP5_1.length; i++) {
+            if (yasP5_1[i] >= 20 && yasP5_1[i] <= 30){
+                sınavP5_1[i] = sınavP5_1[i] + sınavP5_1[i]*5/100;
+            } else if (yasP5_1[i] > 30 && yasP5_1[i] <= 40) {
+                System.out.println("sahada bir avantahjınız yoktur");
+            }
+        }
+        return sınavP5_1;
+    }
+    public static int [] P5_2(){
+        int [] sınavP5_2 =  P4_2();
+        int [] yasP5_2 = metot_yas();
+
+        for (int i = 0; i < yasP5_2.length; i++) {
+            if (yasP5_2[i] >= 20 && yasP5_2[i] <= 30){
+                sınavP5_2[i] = sınavP5_2[i] + sınavP5_2[i]*5/100;
+            } else if (yasP5_2[i] > 30 && yasP5_2[i] <= 40) {
+                System.out.println("sahada bir avantahjınız yoktur");
+            }
+        }
+        return sınavP5_2;
+    }
 }
