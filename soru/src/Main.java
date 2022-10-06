@@ -1,19 +1,69 @@
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     static Scanner scan = new Scanner(System.in);
     static Random ran = new Random();
+    public static void main(String[] args) {
+        metot1("kız");
+        metot2(25);
+        int toplam[] = toplamSınav();
+        int count = 0;
+        boolean yesNo[] = evetHayir();
+        for (int i = 0; i < toplam.length; i++) {
+            System.out.print(toplam[i] + " ");
+            System.out.println(yesNo[i] + " ");
+        }
+        System.out.println();
+        //! true sayısı bulma
+        System.out.println("*************");
+        for (int i = 0; i < toplam.length; i++) {
+            if (yesNo[i] == true) {
+                count++;
+            }
+        }
+        System.out.println(count);
+        System.out.println("*************");
+        int[] toplamTrue = new int[count];
+        int b = 0;
+        //! true olan elementleri atama
+        for (int i = 0; i <= toplam.length-1 ; i++) {
+            if (yesNo[i] == true){
+                toplamTrue[b] = toplam[i];
+                b++;
+            }
+        }
+        //! sıraya sokulmamış hali
+        for (int i = 0; i < toplamTrue.length; i++) {
+            System.out.print(toplamTrue[i] + ",");
+        }
 
+        Arrays.sort(toplamTrue);
+        System.out.println();
+        //!sıraya sokulmuş hali
+        for (int i = 0; i < toplamTrue.length; i++) {
+            System.out.print(toplamTrue[i] + ",");
+        }
+        System.out.println();
+        //! en yüksek puanlı 3 kişiyi yazma
+        for (int i = count - 3; i < count ; i++) {
+            System.out.print(toplamTrue[i] + ",");
+        }
+    }
+    //! HATA METOT YAŞ VE CİNSYETTE  73. ve 87.satır
+    //? CİNSİYETLER = Metot("kız") burada metot tekrar çalışıyor böyle döngüye giriyor
+    //? Sıraya koyma işlemi tamam
+    //!
     public static String metot1(String cinsiyet) {
-//        System.out.println("kullanıcın cinsiyetini giriniz");
-//        String kız_erkek = scan.next();
+        System.out.println("kullanıcın cinsiyetini giriniz");
+        String kız_erkek = scan.next();
         return cinsiyet;
     }
 
     public static int metot2(int yas) {
-//        System.out.println("kullanıcının yaşını giriniz");
-//        int yaş = scan.nextInt();
+        System.out.println("kullanıcının yaşını giriniz");
+        int yaş = scan.nextInt();
         return yas;
     }
 
@@ -23,48 +73,9 @@ public class Main {
     /*
     en yuksek puanlari alanlar sira kaybetmeden bul
      */
-    public static void main(String[] args) {
-
-        metot1("kız");
-        metot2(25);
-        int toplam[] = toplamSınav();
-        int count = 0;
-        int count1 = 0;
-        int[] toplamevet = new int[20];
-        boolean yesNo[] = evetHayir();
-
-        for (int i = 0; i < 20; i++) {
-
-
-            if (yesNo[i] == true) {
-//                for (int j = 0; j < toplamb.length; j++) {
-//                    toplamb[j] = count;
-//                    System.out.print("toplamb index " + toplamb[j]);
-//                }
-                count1 =0;
-                toplamevet[count1] = toplam[i];
-
-            }
-
-            count++;
-//            else {
-//                count1++;
-//            }
-//            for (int j = 0; j < toplamevet.length; j++) {
-//                System.out.print(toplamevet[j] + ", " );
-//            }
-            System.out.print(toplam[i] + " ");
-            System.out.print(yesNo[i] + " ");
-            System.out.println();
-        }
-        int onlyYes[] = new int[count];
-
-
-    }
-
     public static String[] metot_cinsiyet() {
         String cinsiyetler[] = new String[20];
-        cinsiyetler[0] = metot1("kız");
+        cinsiyetler[0] = "kız";
         for (int i = 1; i < 20; i++) {
             int cinsiyet_seçimi = ran.nextInt(2);
             if (cinsiyet_seçimi == 0) {
@@ -78,7 +89,7 @@ public class Main {
 
     public static int[] metot_yas() {
         int yaş[] = new int[20];
-        yaş[0] = metot2(25);
+        yaş[0] = 25;
         for (int i = 1; i < 20; i++) {
             yaş[i] = ran.nextInt(20) + 21;
         }
